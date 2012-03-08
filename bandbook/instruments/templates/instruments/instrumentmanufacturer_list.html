@@ -1,0 +1,18 @@
+{% extends "layouts/page_base.html" %}
+{% load i18n bandbook_instruments breadcrumbs %}
+
+{% block title %}{% trans "Manufacturers" %}{% endblock %}
+
+{% block breadcrumb %}
+    {% breadcrumb_open %}
+    {% breadcrumb_entry "Instruments" to "instrument_list" %}
+    {% breadcrumb_close "Manufacturers" %}
+{% endblock %}
+
+{% block title-search %}
+    {% include 'layouts/blocks/topbar-search.html' %}
+{% endblock %}
+
+{% block main %}
+    {% render_instrumentmanufacturers_table object_list %}
+{% endblock %}

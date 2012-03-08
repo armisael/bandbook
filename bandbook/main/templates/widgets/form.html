@@ -1,0 +1,36 @@
+{% load i18n bandbook_main %}
+<fieldset id="{{ uid }}">
+    {% for field in form %}
+        {% if field.is_hidden %}
+            {{ field }}
+        {% else %}
+        <div class="control-group {% if field.errors %}error{% endif %}">
+            <label class="control-label" for="id_{{ field.html_name }}">{{ field.label }}</label>
+            <div class="controls">
+                {{ field }}
+                <span class="help-inline">
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</fieldset>
+
+<script type="text/javascript">
+    function set_form_focus() {
+        var $form = $('#{{ uid }}').parents('form');
+        var errors = $form.find('.error');
+        var input = (errors.length)
+                ? errors.find(':input[type!="hidden"]')[0]
+                : $form.find(':input[type!="hidden"]')[0];
+        if (input) {
+            input.focus();
+        }
+    }
+
+    $('#modal-from-dom').on('loaded', set_form_focus);
+    $('#modal-from-dom').on('shown', set_form_focus);
+</script>

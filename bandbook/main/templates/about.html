@@ -1,0 +1,72 @@
+{% extends "layouts/page_base.html" %}
+{% load bandbook_main i18n breadcrumbs %}
+
+{% block title %}{% trans "About" %}{% endblock %}
+
+{% block breadcrumb %}
+    {% breadcrumb_open %}
+    {% breadcrumb_close "About" %}
+{% endblock %}
+
+{% block main %}
+    <p>{% trans "Created by Stefano Parmesan. All rights reserved. This code will be eventually available as open-source software somewhere." %}</p>
+    <h2>{% trans "Images" %}</h2>
+    <ul class="thumbnails">
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/mnicolem/337797620/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/instruments1.png" width="125"/>
+                <h5>Nicole Mays</h5>
+            </a>
+        </li>
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/marzbars/2591687742/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/instruments2.png" width="125"/>
+                <h5>Marissa Garza</h5>
+            </a>
+        </li>
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/melachel/5929997680/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/instruments3.png" width="125"/>
+                <h5>Stefano Parmesan</h5>
+            </a>
+        </li>
+
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/alf_bilder/3526687246/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/scores1.png" width="125"/>
+                <h5>Alf Storm</h5>
+            </a>
+        </li>
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/melachel/5929421443/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/scores2.png" width="125"/>
+                <h5>Stefano Parmesan</h5>
+            </a>
+        </li>
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/michelle_magnum/1794374935/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/scores3.png" width="125"/>
+                <h5>Michelle Rivera</h5>
+            </a>
+        </li>
+
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/mervtheswerve/5615930392/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/players1.png" width="125"/>
+                <h5>Merv Stapleton</h5>
+            </a>
+        </li>
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/mitchgroff/46452697/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/players2.png" width="125"/>
+                <h5>Mitch Groff</h5>
+            </a>
+        </li>
+        <li>
+            <a class="thumbnail" href="http://www.flickr.com/photos/htjoshua/382135918/" target="_blank">
+                <img src="{{ STATIC_URL }}images/photos/players3.png" width="125"/>
+                <h5>Jocelyn Chappell</h5>
+            </a>
+        </li>
+    </ul>
+{% endblock %}

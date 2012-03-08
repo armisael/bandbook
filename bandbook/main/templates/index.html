@@ -1,0 +1,27 @@
+{% extends "layouts/site_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Index" %}{% endblock %}
+
+{% block content %}
+<div id="home">
+    {% for block in blocks %}
+        <div class="block" style="left:{{ block.0 }}px;top:{{ block.1 }}px;
+                {% if not block.6 %}width:{{ block.2 }}px;height:{{ block.3 }}px{% endif %}">
+            {% if block.4 %}
+                <div class="alert-message {{ block.4 }}">&nbsp;</div>
+            {% endif %}
+            {% if block.6 %}
+                <a class="thumbnail" href="{{ block.5 }}"><img src="{{ block.6 }}"/></a>
+            {% endif %}
+            {% if block.7 %}
+                <div class="alert-message text">
+                    {% with "widgets/"|add:block.7|add:".html" as template %}
+                    {% include template %}
+                    {% endwith %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

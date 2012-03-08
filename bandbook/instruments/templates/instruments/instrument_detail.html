@@ -1,0 +1,24 @@
+{% extends "layouts/page_base.html" %}
+{% load bandbook_instruments i18n breadcrumbs %}
+
+{% block title %}{{ object }}{% endblock %}
+
+{% block breadcrumb %}
+    {% breadcrumb_open %}
+    {% breadcrumb_entry "Instruments" to "instrument_list" %}
+    {% breadcrumb_entry "Owned" to "instrument_list" %}
+    {% breadcrumb_close object %}
+{% endblock %}
+
+{% block subtitle %}{% trans "since" %} {{ object.date_of_purchase }}{% endblock %}
+{% block title-actions %}
+    {% if user.is_staff %}
+        {% include 'layouts/blocks/topbar-actions.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <h6>{% trans "Condition" %}:</h6>
+    <p>{{ object.get_condition }}</p>
+    {% render_instrumenthistory_table object object.instrumenthistory_set.all %}
+{% endblock %}

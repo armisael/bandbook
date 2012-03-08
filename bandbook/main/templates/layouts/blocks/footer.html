@@ -1,0 +1,9 @@
+{% load i18n %}
+{% load url from future %}
+<footer>
+    <p>&copy; <a href="http://www.silix.org" target="_blank">silix.org 2011</a>
+        | <a href="{% url "about" %}">{% trans "About" %}</a>
+        | <a href="/admin/">{% trans "Admin" %}</a>
+        | <a href="/sentry/">{% trans "Sentry" %}</a>
+    </p>
+</footer>

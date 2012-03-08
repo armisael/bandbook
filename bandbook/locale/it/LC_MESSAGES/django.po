@@ -1,0 +1,312 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-27 20:29+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:9
+msgid "Owned"
+msgstr "In possesso"
+
+#: instruments/forms.py:23 instruments/models.py:103
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "Event"
+msgstr "Evento"
+
+#: instruments/forms.py:49
+msgid "This field is required with the specified event"
+msgstr "Questo campo è richiesto con l'evento specificato"
+
+#: instruments/models.py:15 instruments/models.py:31 instruments/models.py:47
+#: instruments/models.py:59
+#: instruments/templatetags/bandbook_instruments.py:30
+#: instruments/templatetags/bandbook_instruments.py:45
+#: instruments/templatetags/bandbook_instruments.py:49
+msgid "Name"
+msgstr "Nome"
+
+#: instruments/models.py:18 instruments/models.py:35
+msgid "Ordering"
+msgstr "Ordinamento"
+
+#: instruments/models.py:20 instruments/models.py:37 instruments/models.py:49
+#: instruments/models.py:64 instruments/models.py:78
+msgid "Slug"
+msgstr "Slug"
+
+#: instruments/models.py:32
+#: instruments/templatetags/bandbook_instruments.py:26
+msgid "Category"
+msgstr "Categoria"
+
+#: instruments/models.py:60
+#: instruments/templatetags/bandbook_instruments.py:49
+msgid "Type"
+msgstr "Tipo"
+
+#: instruments/models.py:62
+msgid "Manufacturer"
+msgstr "Produttore"
+
+#: instruments/models.py:74
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Model"
+msgstr "Modello"
+
+#: instruments/models.py:75
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Date of Purchase"
+msgstr "Data d'Acquisto"
+
+#: instruments/models.py:76
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Code"
+msgstr "Codice"
+
+#: instruments/models.py:90
+msgid "---"
+msgstr "---"
+
+#: instruments/models.py:100
+#: instruments/templatetags/bandbook_instruments.py:26
+msgid "Instrument"
+msgstr "Strumento"
+
+#: instruments/models.py:101
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "From"
+msgstr "Dal"
+
+#: instruments/models.py:102
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "To"
+msgstr "Al"
+
+#: instruments/models.py:104
+msgid "Condition"
+msgstr "Condizioni"
+
+#: instruments/models.py:105
+msgid "Notes"
+msgstr "Note"
+
+#: instruments/models.py:109
+msgid "Target"
+msgstr "Soggetto"
+
+#: instruments/models.py:119
+#, python-format
+msgid "%(description)s since %(date_start)s"
+msgstr "%(description)s dal %(date_start)s"
+
+#: instruments/models.py:124
+msgid "error"
+msgstr "errore"
+
+#: instruments/handlers/instrument_history.py:30
+msgid "Booking"
+msgstr "Prestito"
+
+#: instruments/handlers/instrument_history.py:31
+#, python-format
+msgid "Booked by %(player)s"
+msgstr "In prestito a %(player)s"
+
+#: instruments/handlers/instrument_history.py:37
+#: instruments/handlers/instrument_history.py:38
+msgid "In Repair"
+msgstr "In Riparazione"
+
+#: instruments/templates/categories.html:4
+#: main/templates/layouts/blocks/topbar.html:21
+#: main/templates/layouts/blocks/topbar.html:27
+msgid "Instruments"
+msgstr "Strumenti"
+
+#: instruments/templates/instruments.html:4
+#: main/templates/layouts/blocks/topbar.html:25
+msgid "Owned Instruments"
+msgstr "Strumenti in possesso"
+
+#: instruments/templates/manufacturers.html:4
+#: main/templates/layouts/blocks/topbar.html:28
+msgid "Manufacturers"
+msgstr "Produttori"
+
+#: instruments/templates/instruments/instrument_detail.html:13
+msgid "since"
+msgstr "dal"
+
+#: instruments/templates/instruments/instrument_form.html:4
+#: instruments/templates/instruments/instrumenttype_form.html:4
+msgid "New Instrument"
+msgstr "Nuovo Strumento"
+
+#: instruments/templates/instruments/instrumentcategory_form.html:4
+msgid "New Category"
+msgstr "Nuova Categoria"
+
+#: instruments/templates/instruments/instrumenthistory_form.html:4
+msgid "Add Instrument History"
+msgstr "Aggiungi Storico Strumento"
+
+#: instruments/templates/instruments/instrumentmanufacturer_form.html:4
+msgid "New Manufacturer"
+msgstr "Nuovo Produttore"
+
+#: instruments/templates/instruments/instrumentmodel_form.html:4
+msgid "New Model"
+msgstr "Nuovo Modello"
+
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Status"
+msgstr "Stato"
+
+#: instruments/templatetags/bandbook_instruments.py:45
+msgid "Models"
+msgstr "Modelli"
+
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "Player"
+msgstr "Suonatore"
+
+#: main/views.py:33
+msgid "This account has been disabled. Sorry for that!"
+msgstr "Questo profilo è stato disabilitato. Mi dispiace!"
+
+#: main/views.py:36
+msgid "Wrong username or password"
+msgstr "Nome utente o password errati"
+
+#: main/templates/about.html:4 main/templates/layouts/blocks/footer.html:5
+msgid "About"
+msgstr "About"
+
+#: main/templates/about.html:12
+msgid ""
+"Created by Stefano Parmesan. All rights reserved. This code will be "
+"eventually available as open-source software somewhere."
+msgstr ""
+"Creato da Stefano Parmesan. Tutti i diritti riservati. Questo codice sarà "
+"prima o poi disponibile come open-source software da qualche parte."
+
+#: main/templates/about.html:13
+msgid "Images"
+msgstr "Immagini"
+
+#: main/templates/index.html:4
+msgid "Index"
+msgstr "Indice"
+
+#: main/templates/layouts/delete_base.html:5
+msgid "Delete"
+msgstr "Cancella"
+
+#: main/templates/layouts/delete_base.html:13
+#, python-format
+msgid ""
+"\n"
+"    Are you sure you want to delete <b>%(object)s</b>? This action can't be "
+"recovered.\n"
+"    "
+msgstr ""
+"\n"
+"    Sei sicuro di voler cancellare <b>%(object)s</b>? Questa azione non può "
+"essere annullata.\n"
+"    "
+
+#: main/templates/layouts/modal_base.html:13
+msgid "Save changes"
+msgstr "Salva modifiche"
+
+#: main/templates/layouts/modal_base.html:14
+msgid "Close"
+msgstr "Chiudi"
+
+#: main/templates/layouts/site_base.html:60
+msgid "Something went wrong"
+msgstr "Qualcosa è andato storto"
+
+#: main/templates/layouts/site_base.html:85
+msgid "Error while ordering"
+msgstr "Errore nell'ordinamento"
+
+#: main/templates/layouts/blocks/footer.html:6
+msgid "Admin"
+msgstr "Amministrazione"
+
+#: main/templates/layouts/blocks/footer.html:7
+msgid "Sentry"
+msgstr "Sentry"
+
+#: main/templates/layouts/blocks/modal.html:9
+msgid "Loading..."
+msgstr "Caricamento..."
+
+#: main/templates/layouts/blocks/modal.html:12
+msgid "Please, wait"
+msgstr "Prego, attendere"
+
+#: main/templates/layouts/blocks/topbar.html:18
+msgid "Scores"
+msgstr "Spartiti"
+
+#: main/templates/layouts/blocks/topbar.html:31
+msgid "Players"
+msgstr "Suonatori"
+
+#: main/templates/layouts/blocks/topbar.html:32
+msgid "Events"
+msgstr "Eventi"
+
+#: main/templates/layouts/blocks/topbar.html:38
+msgid "Welcome"
+msgstr "Benvenuto"
+
+#: main/templates/layouts/blocks/topbar.html:39
+msgid "logout"
+msgstr "esci"
+
+#: main/templates/layouts/blocks/topbar.html:43
+msgid "Username"
+msgstr "Nome utente"
+
+#: main/templates/layouts/blocks/topbar.html:44
+msgid "Password"
+msgstr "Password"
+
+#: main/templates/layouts/blocks/topbar.html:45
+msgid "Sign in"
+msgstr "Entra"
+
+#: main/templates/widgets/table.html:70
+#, python-format
+msgid ""
+"\n"
+"                        Just one element\n"
+"                        "
+msgid_plural ""
+"\n"
+"                        %(counter)s elements\n"
+"                    "
+msgstr[0] ""
+"\n"
+"                        Un solo elemento\n"
+"                        "
+msgstr[1] ""
+"\n"
+"                        %(counter)s elementi\n"
+"                    "

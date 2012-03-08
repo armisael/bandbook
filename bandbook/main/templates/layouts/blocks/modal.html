@@ -1,0 +1,14 @@
+{% load i18n %}
+<div id="modal-from-dom" class="modal hide fade" style="display: none; ">
+    {# this content will be replaced by the template... #}
+</div>
+
+<div id="modal-template" class="hidden">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>{% trans "Loading..." %}</h3>
+    </div>
+    <div class="modal-body">
+        <p id="modal-label">{% trans "Please, wait" %}</p>
+    </div>
+</div>

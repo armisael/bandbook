@@ -1,0 +1,21 @@
+{% extends "layouts/modal_base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Delete" %}
+{% endblock %}
+
+{% block subtitle %}
+{{ object }}
+{% endblock %}
+
+{% block main %}
+    {% blocktrans %}
+    Are you sure you want to delete <b>{{ object }}</b>? This action can't be recovered.
+    {% endblocktrans %}
+
+    <form method="post" action="" class="form-horizontal" onsubmit="submit_modal(this); return false;">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="/" />
+    </form>
+{% endblock %}

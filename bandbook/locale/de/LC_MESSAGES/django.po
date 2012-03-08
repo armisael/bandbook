@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-25 13:22+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: instruments/forms.py:23 instruments/templatetags/bandbook_instruments.py:64
+msgid "Event"
+msgstr ""
+
+#: instruments/forms.py:49
+msgid "This field is required with the specified event"
+msgstr ""
+
+#: instruments/models.py:86
+msgid "---"
+msgstr ""
+
+#: instruments/models.py:115
+#, python-format
+msgid "%(description)s since %(date_start)s"
+msgstr ""
+
+#: instruments/models.py:120
+msgid "error"
+msgstr ""
+
+#: instruments/handlers/instrument_history.py:30
+msgid "Booking"
+msgstr ""
+
+#: instruments/handlers/instrument_history.py:31
+#, python-format
+msgid "Booked by %(player)s"
+msgstr ""
+
+#: instruments/handlers/instrument_history.py:37
+#: instruments/handlers/instrument_history.py:38
+msgid "In Repair"
+msgstr ""
+
+#: instruments/templates/categories.html:4
+#: main/templates/layouts/blocks/topbar.html:21
+#: main/templates/layouts/blocks/topbar.html:27
+msgid "Instruments"
+msgstr ""
+
+#: instruments/templates/instruments.html:4
+#: main/templates/layouts/blocks/topbar.html:25
+msgid "Owned Instruments"
+msgstr ""
+
+#: instruments/templates/manufacturers.html:4
+#: main/templates/layouts/blocks/topbar.html:28
+msgid "Manufacturers"
+msgstr ""
+
+#: instruments/templates/instruments/instrument_detail.html:13
+msgid "since"
+msgstr ""
+
+#: instruments/templates/instruments/instrument_form.html:4
+#: instruments/templates/instruments/instrumenttype_form.html:4
+msgid "New Instrument"
+msgstr ""
+
+#: instruments/templates/instruments/instrumentcategory_form.html:4
+msgid "New Category"
+msgstr ""
+
+#: instruments/templates/instruments/instrumenthistory_form.html:4
+msgid "Add Instrument History"
+msgstr ""
+
+#: instruments/templates/instruments/instrumentmanufacturer_form.html:4
+msgid "New Manufacturer"
+msgstr ""
+
+#: instruments/templates/instruments/instrumentmodel_form.html:4
+msgid "New Model"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Model"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Date of Purchase"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Code"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:13
+msgid "Status"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:26
+msgid "Category"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:26
+msgid "Instrument"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:30
+#: instruments/templatetags/bandbook_instruments.py:45
+#: instruments/templatetags/bandbook_instruments.py:49
+msgid "Name"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:45
+msgid "Models"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:49
+msgid "Type"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "From"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "To"
+msgstr ""
+
+#: instruments/templatetags/bandbook_instruments.py:64
+msgid "Player"
+msgstr ""
+
+#: main/views.py:33
+msgid "This account has been disabled. Sorry for that!"
+msgstr ""
+
+#: main/views.py:36
+msgid "Wrong username or password"
+msgstr ""
+
+#: main/templates/about.html:4 main/templates/layouts/blocks/footer.html:5
+msgid "About"
+msgstr ""
+
+#: main/templates/about.html:12
+msgid ""
+"Created by Stefano Parmesan. All rights reserved. This code will be "
+"eventually available as open-source software somewhere."
+msgstr ""
+
+#: main/templates/about.html:13
+msgid "Images"
+msgstr ""
+
+#: main/templates/index.html:4
+msgid "Index"
+msgstr ""
+
+#: main/templates/layouts/delete_base.html:5
+msgid "Delete"
+msgstr ""
+
+#: main/templates/layouts/delete_base.html:13
+#, python-format
+msgid ""
+"\n"
+"    Are you sure you want to delete <b>%(object)s</b>? This action can't be "
+"recovered.\n"
+"    "
+msgstr ""
+
+#: main/templates/layouts/modal_base.html:13
+msgid "Save changes"
+msgstr ""
+
+#: main/templates/layouts/modal_base.html:14
+msgid "Close"
+msgstr ""
+
+#: main/templates/layouts/site_base.html:60
+msgid "Something went wrong"
+msgstr ""
+
+#: main/templates/layouts/site_base.html:85
+msgid "Error while ordering"
+msgstr ""
+
+#: main/templates/layouts/blocks/footer.html:6
+msgid "Admin"
+msgstr ""
+
+#: main/templates/layouts/blocks/footer.html:7
+msgid "Sentry"
+msgstr ""
+
+#: main/templates/layouts/blocks/modal.html:9
+msgid "Loading..."
+msgstr ""
+
+#: main/templates/layouts/blocks/modal.html:12
+msgid "Please, wait"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:18
+msgid "Scores"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:31
+msgid "Players"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:32
+msgid "Events"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:38
+msgid "Welcome"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:39
+msgid "logout"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:43
+msgid "Username"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:44
+msgid "Password"
+msgstr ""
+
+#: main/templates/layouts/blocks/topbar.html:45
+msgid "Sign in"
+msgstr ""
+
+#: main/templates/widgets/table.html:70
+#, python-format
+msgid ""
+"\n"
+"                        Just one element\n"
+"                        "
+msgid_plural ""
+"\n"
+"                        %(counter)s elements\n"
+"                    "
+msgstr[0] ""
+msgstr[1] ""

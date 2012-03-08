@@ -1,0 +1,92 @@
+{% load i18n bandbook_main %}
+{% load url from future %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>BandBook::{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ STATIC_URL }}images/favicon.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+
+    <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.tablednd.0.6.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bb_main.js"></script>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            {% include 'layouts/blocks/topbar.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" id="main_container">
+    <div class="row-fluid">
+        <div class="span12">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    {% include 'layouts/blocks/footer.html' %}
+</div>
+
+    {% include 'layouts/blocks/messages.html' %}
+{% include 'layouts/blocks/modal.html' %}
+
+<script language="javascript">
+    $('.datepicker').datepicker();
+    $('.open-modal').click(function(){
+        var $modal = $('#modal-from-dom')
+            , template = $('#modal-template').html();
+        $modal.html(template);
+        $modal.modal({
+            'backdrop': 'static',
+            'keyboard': true,
+            'show': true
+        });
+        var url = $(this).data('href');
+        $modal.attr("data-href", url);
+        $.get(url, null, function(data) {
+            $modal.html(data);
+            $modal.trigger('loaded');
+        }).error(function(obj, error, ee) {
+            $('#modal-label').html("{% trans "Something went wrong" %}: " + ee);
+        });
+    });
+
+    function get_row_id(row) { return row.id.split(':')[1]; }
+    $('table.draggable').tableDnD({
+        dragHandle: "dragHandle",
+        onDragClass: "on-dragging",
+        onDrop: function(table, row) {
+            var rows = table.tBodies[0].rows,
+                    target_id = get_row_id(row),
+                    next_id = -1,
+                    url = $(table).attr('data-ordering-url');
+
+            for (var i=0; i<rows.length; i++) {
+                var curr_id = get_row_id(rows[i]);
+                if (curr_id == target_id) {
+                    if (i+1 < rows.length)
+                        next_id = get_row_id(rows[i+1]);
+                    break;
+                }
+            }
+
+            $.post(url.replace('%pka', target_id).replace('%pkb', next_id), {'csrfmiddlewaretoken': '{{ csrf_token }}'})
+                    .error(function(obj, _, e) {
+                        put_message('error', '{% trans "Error while ordering"|escapejs %}: ' + e);
+                    });
+        },
+    });
+</script>
+
+</body>
+</html>

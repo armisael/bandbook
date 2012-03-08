@@ -1,0 +1,16 @@
+{% extends "layouts/site_base.html" %}
+
+{% block content %}
+    <div class="span11-5">
+    <div class="well">
+        <div id="title-actions" class="pull-right">{% block title-actions %}{% endblock %}</div>
+        {% block breadcrumb %}{% endblock %}
+        <h1>{% block title %}{% endblock %}
+            <small>{% block subtitle %}{% endblock %}</small>
+            <div id="title-search" class="pull-right">{% block title-search %}{% endblock %}</div>
+        </h1>
+    </div>
+    {% block main %}
+    {% endblock %}
+    </div>
+{% endblock %}

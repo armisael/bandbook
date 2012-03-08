@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load url from future %}
+
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</a>
+
+<a class="brand" href="{% url "index" %}">
+    {% logo %}
+    <div id="logo-string">
+        <span class="logoA">Band</span><span class="logoB">Book</span>
+    </div>
+</a>
+<div class="nav-collapse">
+    <ul class="nav">
+        <li><a href="#scores">{% trans "Scores" %}</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {% trans "Instruments" %}
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url "instrument_list" %}">{% trans "Owned Instruments" %}</a></li>
+                <li class="divider"></li>
+                <li><a href="{% url "instrumentcategory_list" %}">{% trans "Instruments" %}</a></li>
+                <li><a href="{% url "instrumentmanufacturer_list" %}">{% trans "Manufacturers" %}</a></li>
+            </ul>
+        </li>
+        <li><a href="#players">{% trans "Players" %}</a></li>
+        <li><a href="#events">{% trans "Events" %}</a></li>
+    </ul>
+
+
+    {% if request.user.is_active %}
+        <p class="navbar-text pull-right">
+            {% trans "Welcome" %} {{ request.user.first_name }}!
+            <button class="btn btn-small" onclick="document.location='{% url "logout" %}'">{% trans "logout" %}</button>
+        </p>
+    {% else %}
+        <form action="{% url 'login' %}" class="pull-right" method="post">{% csrf_token %}
+            <input name="username" class="input-small" type="text" placeholder="{% trans "Username" %}">
+            <input name="password" class="input-small" type="password" placeholder="{% trans "Password" %}">
+            <button class="btn btn-small" type="submit">{% trans "Sign in" %}</button>
+        </form>
+    {% endif %}
+</div>

@@ -1,0 +1,21 @@
+<div id="messages">
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" style="display: none;">
+        <a class="close hand" onclick="$(this).parent().slideUp('fast')">×</a>
+        <p>{{ message }}</p>
+    </div>
+{% endfor %}
+
+    <div class="template hidden">
+        <div class="alert alert-%level" style="display: none;">
+            <a class="close hand" onclick="$(this).parent().slideUp('fast')">×</a>
+            <p>%message</p>
+        </div>
+    </div>
+<div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#messages .alert').not('.template').fadeIn();
+    })
+</script>

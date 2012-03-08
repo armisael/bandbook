@@ -1,0 +1,10 @@
+{% load i18n %}
+<form class="pull-left form-search" method="get">
+    <a href="{{ request.path }}" class="{% if not request.GET|get:'q' %}hide{% endif %}">
+        <i class="icon-remove pull-right search-cross"></i>
+    </a>
+
+    <input type="text" class="input-medium search-query" placeholder="{% trans "Search" %}" name='q' value="{{ request.GET|get:'q'|default_if_none:'' }}"
+            onkeyup="if (this.value) $(this).siblings('a').show(); else $(this).siblings('a').hide()"
+            />
+</form>

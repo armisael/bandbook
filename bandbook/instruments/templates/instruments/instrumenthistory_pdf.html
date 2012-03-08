@@ -1,0 +1,33 @@
+<document pagesize='a4'>
+<html>
+<head>
+    <title>Something</title>
+    <style>
+        @page {
+            size: a4 landscape;
+            margin: 2cm;
+        }
+
+        h1 { text-align: middle; font-size: 40px; }
+        p {font-size: 20px;}
+        span.dummy { font-size: 2px;}
+
+        .field {
+            text-decoration: underline;
+            font-size: 1.2em;
+            font-family: courier;
+        }
+
+    </style>
+</head>
+
+<body>
+<table>
+    <tr>
+        <td>{% include 'instruments/instrumenthistory_pdf_a5.html' with type='COPIA BANDA' %}</td>
+        <td width="50">&nbsp</td>
+        <td>{% include 'instruments/instrumenthistory_pdf_a5.html' with type='COPIA ALLIEVO '%}</td>
+    </tr>
+</table>
+</body>
+</document>

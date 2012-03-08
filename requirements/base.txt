@@ -1,0 +1,18 @@
+Django==1.3
+django-extensions==0.7.1
+
+psycopg2==2.4.1
+
+South==0.7.3
+
+django-sentry==1.12.1
+django-grappelli==2.3.5
+django-templatetag-sugar==0.1
+
+-e git+https://github.com/etianen/django-reversion.git@512cfdbf8b31f194f322ebeb0b936eb140b7d5f6#egg=django_reversion-dev
+-e git://github.com/pydanny/django-uni-form.git@d628b247d10a4cef439748865cafdc3ccb63bbdd#egg=django_uni_form-dev
+
+PIL==1.1.7
+xhtml2pdf==0.0.3
+
+django-ajaxutils==0.1.2

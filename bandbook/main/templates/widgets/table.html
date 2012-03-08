@@ -1,0 +1,93 @@
+{% load i18n %}
+
+
+<table class="table table-striped {% if is_subtable %}table-bordered{% endif %} {% if drag %}draggable{% endif %}"
+        {% if drag %}data-ordering-url="{{ prefix }}%pka/%pkb/order/"{% endif %}>
+<thead>
+    <tr>
+        {% if drag %}<th class="dragHandle"><i class="icon-resize-vertical"></i></th>{% endif %}
+
+        {% for attrib in header %}
+        <th>{{ attrib }}</th>
+        {% endfor %}
+
+        {% if has_actions %}
+        <th class="actions-{{ 0|add_one_if:edit|add_one_if:delete|add_one_if:view|add_one_if:pdf }}">
+            {% if new %}
+            <button class="btn small pull-right open-modal"
+                    data-href="{{ prefix }}create/{% if is_subtable %}?ppk={{ parent_pk }}{% endif %}">
+                <i class="icon-plus"></i>
+            </button>
+            {% endif %}
+        </th>
+        {% endif %}
+    </tr>
+</thead>
+<tbody>
+    {% for obj in obj_list %}
+    <tr id="{{ uid }}:{{ obj.pk }}">
+        {% if drag %}
+        <td class="dragHandle">
+            <i class="icon-resize-vertical"></i>
+        </td>
+        {% endif %}
+        {% for attrib in fields %}
+        <td>
+            {% if attrib|is_dictionary %}
+                {% render_subtable obj attrib %}
+            {% else %}
+                {% if forloop.first and obj.get_absolute_url %}
+                    <a href="{{ obj.get_absolute_url }}">
+                {% endif %}
+
+                {{ obj|get_attrib:attrib|default_if_none:'---' }}
+
+                {% if forloop.first and obj.get_absolute_url %}
+                    </a>
+                {% endif %}
+            {% endif %}
+        </td>
+        {% endfor %}
+
+        {% if has_actions %}
+        <td>
+            <div class="btn-group pull-right">
+            {% with base_url=obj|get_absolute_url:prefix %}
+            {% if view %}<a class="btn small" href="{{ base_url }}"><i class="icon-info-sign"></i></a>{% endif %}
+            {% if pdf %}<a class="btn small" href="{{ base_url }}print/" target="_blank"/><i class="icon-print"></i></a>{% endif %}
+            {% if edit %}<button class="btn small open-modal" data-href="{{ base_url }}update/"><i class="icon-edit"></i></button>{% endif %}
+            {% if delete %}<button class="btn small danger open-modal" data-href="{{ base_url }}delete/"><i class="icon-trash"></i></button>{% endif %}
+            {% endwith %}
+            </div>
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</tbody>
+<tfoot>
+    <tr>
+        <th colspan="{{ header|length|add_one_if:drag }}" class="text">
+            <span class="small">
+                {% with counter=obj_list|length %}
+                    {% blocktrans count counter=counter %}
+                        Just one element
+                        {% plural %}
+                        {{ counter }} elements
+                    {% endblocktrans %}
+                {% endwith %}
+            </span>
+        </th>
+
+        {% if has_actions %}
+        <th>
+            {% if new %}
+            <button class="btn small pull-right open-modal"
+                    data-href="{{ prefix }}create/{% if is_subtable %}?ppk={{ parent_pk }}{% endif %}">
+                <i class="icon-plus"></i>
+            </button>
+            {% endif %}
+        </th>
+        {% endif %}
+    </tr>
+</tfoot>
+</table>

@@ -1,0 +1,14 @@
+<script language="text/javascript">
+
+    var $modal_dom = $('#modal-from-dom')
+        , modal_href = $modal_dom.attr('data-href');
+
+    $modal_dom.modal('hide');
+
+    if (modal_href.indexOf('?back') >= 0) {
+        location = '../';
+    } else {
+        //
+        {% if reload %}location.reload();{% endif %}
+    }
+</script>

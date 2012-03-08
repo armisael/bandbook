@@ -1,0 +1,13 @@
+{% extends "layouts/modal_base.html" %}
+{% load i18n bandbook_main %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+    <form method="post" action="" class="form-horizontal" onsubmit="submit_modal(this); return false;">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="/" />
+        {% render_form form %}
+        <input type="submit" class="hidden zero" />
+    </form>
+{% endblock %}

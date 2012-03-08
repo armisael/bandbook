@@ -1,0 +1,39 @@
+{% load i18n %}
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>
+        {% block title %}{% endblock %}
+        <small>{% block subtitle %}{% endblock %}</small>
+    </h3>
+</div>
+<div class="modal-body">
+    {% block main %}{% endblock %}
+</div>
+<div class="modal-footer">
+    <a href="#" class="btn btn-primary" onclick="submit_modal(this)">{% trans "Save changes" %}</a>
+    <a href="#" class="btn" data-dismiss="modal">{% trans "Close" %}</a>
+</div>
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
+    function submit_modal(sender) {
+        var $modal = $(sender).parents('.modal')
+            ,form = $modal.find('form')
+            ,modal_href = $modal.attr("data-href")
+            ,action = (form.attr("action")) ? form.attr("action") : modal_href
+            ,method = form.attr("method");
+        $.ajax({
+            url: action,
+            type: method,
+            data: form.serialize(),
+            success: function(data, status, obj) {
+                $modal.html(data);
+                $modal.trigger('loaded');
+            },
+            error: function(obj, status, error) {
+                $modal.html($modal.html() + obj);
+                console.log("ERROR", obj, status, error);
+            }
+        });
+    }
+</script>
