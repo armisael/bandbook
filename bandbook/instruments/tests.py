@@ -201,5 +201,6 @@ class InstrumentTypeViews(TestCase):
 
         url = reverse('instrumenttype_update', args=(type.category.slug, type.pk))
         response = self.client.post(url, {
-            'name':
+            'name': None
         })
+        self.assertTrue(False)
