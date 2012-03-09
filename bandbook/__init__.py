@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
+
 def dummy_for_makemessages():
     """
     This function allows manage makemessages to find the forecast types for translation.
