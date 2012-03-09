@@ -5,7 +5,8 @@ from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput, Textarea
 from django.forms import ModelChoiceField, ChoiceField
 from bandbook.instruments.helpers import get_default_ordering
-from bandbook.instruments.models import Instrument, InstrumentHistory, InstrumentCategory, InstrumentType
+from bandbook.instruments.models import Instrument, InstrumentHistory, \
+    InstrumentCategory, InstrumentType
 from bandbook.instruments.handlers.instrument_history import site
 from bandbook.main.widgets import BootstrapDatepicker
 from bandbook.players.models import Player
@@ -57,8 +58,8 @@ class InstrumentHistoryForm(ModelForm):
             'instrument': HiddenInput(),
             'content_type': HiddenInput(),
             'object_id': HiddenInput(),
-            'condition': Textarea(attrs={'rows':2, 'class': 'span4'}),
-            'notes': Textarea(attrs={'rows':2, 'class': 'span4'}),
+            'condition': Textarea(attrs={'rows': 2, 'class': 'span4'}),
+            'notes': Textarea(attrs={'rows': 2, 'class': 'span4'}),
         }
 
     def __init__(self, *args, **kwargs):

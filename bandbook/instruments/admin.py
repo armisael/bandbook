@@ -1,7 +1,8 @@
 import reversion
 
 from django.contrib import admin
-from bandbook.instruments.models import InstrumentCategory, Instrument, InstrumentType, InstrumentManufacturer, InstrumentModel, InstrumentHistory
+from bandbook.instruments.models import InstrumentCategory, Instrument, \
+    InstrumentType, InstrumentManufacturer, InstrumentModel, InstrumentHistory
 
 
 class InstrumentCategoryAdmin(reversion.VersionAdmin):
@@ -32,7 +33,8 @@ class InstrumentAdmin(reversion.VersionAdmin):
 
 
 class InstrumentHistoryAdmin(reversion.VersionAdmin):
-    list_display = ['instrument', 'get_event', 'date_start', 'date_end', 'target']
+    list_display = ['instrument', 'get_event', 'date_start',
+                    'date_end', 'target']
 
 
 admin.site.register(InstrumentCategory, InstrumentCategoryAdmin)

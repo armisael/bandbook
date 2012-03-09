@@ -7,7 +7,8 @@ from templatetag_sugar.register import tag
 
 @tag(register, [])
 def breadcrumb_open(context):
-    return """<ul class="breadcrumb"> %s""" % breadcrumb_entry(context, "", "index", icon='home')
+    return """<ul class="breadcrumb"> %s""" % \
+           breadcrumb_entry(context, "", "index", icon='home')
 
 
 @tag(register, [Variable(), Constant("to"), Variable()])
@@ -16,7 +17,10 @@ def breadcrumb_entry(context, title, url_name, last=False, icon=None):
         url = reverse(url_name)
     except NoReverseMatch:
         url = ''
-    return  """<li class="%(class)s"><a href="%(url)s">%(icon)s %(title)s</a> %(divider)s</li>""" % {
+    return """
+    <li class="%(class)s">
+       <a href="%(url)s">%(icon)s %(title)s</a> %(divider)s
+    </li>""" % {
         'title': _(title) if title else "",
         'url': url,
         'class': 'active' if last else '',

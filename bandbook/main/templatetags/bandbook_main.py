@@ -4,7 +4,8 @@ from datetime import date
 
 from django.template.defaultfilters import register
 from django.utils.safestring import mark_safe
-from bandbook.main.helpers import index_block, filter_queryset, filter_searchby, filter_matches
+from bandbook.main.helpers import index_block, filter_queryset, \
+    filter_searchby, filter_matches
 
 
 @register.inclusion_tag('logo.html')

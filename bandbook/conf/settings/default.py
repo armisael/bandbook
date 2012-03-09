@@ -15,12 +15,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'bandbook',                      # Or path to database file if using sqlite3.
-        'USER': 'bandbook',                      # Not used with sqlite3.
-        'PASSWORD': 'b@ndb00k',                  # Not used with sqlite3.
-        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bandbook',
+        'USER': 'bandbook',
+        'PASSWORD': 'b@ndb00k',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -124,7 +124,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'bandbook.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates" or
+    # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )

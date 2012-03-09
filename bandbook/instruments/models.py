@@ -19,6 +19,7 @@ class InstrumentCategory(TimeStampedModel):
                          unique=True, editable=False)
 
     search_by = ('name', 'instrumenttype__name')
+
     class Meta:
         ordering = ['ordering']
         verbose_name_plural = "Instrument categories"
@@ -29,13 +30,15 @@ class InstrumentCategory(TimeStampedModel):
 
 class InstrumentType(TimeStampedModel):
     name = models.CharField(max_length=64, verbose_name=_("Name"))
-    category = models.ForeignKey(InstrumentCategory, verbose_name=_("Category"))
+    category = models.ForeignKey(InstrumentCategory,
+                                 verbose_name=_("Category"))
     ordering = models.IntegerField(editable=False,
                default=-1, verbose_name=_("Ordering"))
     slug = AutoSlugField('slug', populate_from='name',
                          unique=True, editable=False)
 
     parent_model = ('category', InstrumentCategory)
+
     class Meta:
         ordering = ['ordering']
 
@@ -48,8 +51,10 @@ class InstrumentManufacturer(TimeStampedModel):
     slug = AutoSlugField('slug', populate_from='name',
                          unique=True, editable=False)
 
-    search_by = ('name', 'instrumentmodel__name', 'instrumentmodel__type__name',
+    search_by = ('name', 'instrumentmodel__name',
+                 'instrumentmodel__type__name',
                  'instrumentmodel__type__category__name')
+
     class Meta:
         ordering = ['name']
 
@@ -66,6 +71,7 @@ class InstrumentModel(TimeStampedModel):
                          unique=True, editable=False)
 
     parent_model = ('manufacturer', InstrumentManufacturer)
+
     class Meta:
         ordering = ['type__ordering']
 
@@ -82,6 +88,7 @@ class Instrument(TimeStampedModel):
 
     search_by = ('code', 'model__name', 'model__manufacturer__name',
                  'model__type__name', 'model__type__category__name', )
+
     class Meta:
         ordering = ['model__type__ordering']
 
@@ -97,7 +104,8 @@ class Instrument(TimeStampedModel):
     def get_condition(self):
         try:
             return self.instrumenthistory_set.filter(~Q(condition=None) &
-                                                     ~Q(condition=''))[0].condition
+                                                     ~Q(condition=''))[0]\
+                    .condition
         except IndexError:
             return _('---')
 
@@ -111,7 +119,8 @@ class InstrumentHistory(TimeStampedModel):
     date_start = models.DateField(verbose_name=_("From"))
     date_end = models.DateField(blank=True, null=True, verbose_name=_("To"))
     event_id = models.IntegerField(verbose_name=_("Event"))
-    condition = models.TextField(blank=True, default='', verbose_name=_("Condition"))
+    condition = models.TextField(blank=True, default='',
+                                 verbose_name=_("Condition"))
     notes = models.TextField(blank=True, default='', verbose_name=_("Notes"))
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=True, null=True)
@@ -119,6 +128,7 @@ class InstrumentHistory(TimeStampedModel):
     target = GenericForeignKey('content_type', 'object_id')
 
     parent_model = ('instrument', Instrument)
+
     class Meta:
         ordering = ['-date_start']
 

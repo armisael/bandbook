@@ -1,5 +1,6 @@
 from bandbook.main.views import BBView
-from bandbook.instruments.forms import InstrumentForm, InstrumentHistoryForm, InstrumentCategoryForm, InstrumentTypeForm
+from bandbook.instruments.forms import InstrumentForm, InstrumentHistoryForm, \
+    InstrumentCategoryForm, InstrumentTypeForm
 from bandbook.instruments.models import Instrument, InstrumentCategory, \
     InstrumentManufacturer, InstrumentType, InstrumentModel, InstrumentHistory
 
