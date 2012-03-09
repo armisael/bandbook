@@ -6,6 +6,7 @@ python:
 
 install: 
   - pip install -r requirements/base.txt --use-mirrors
+  - pip install -r requirements/test.txt --use-mirrors
 
 before_script:
   - "psql -c 'create database bandbook;' -U postgres"
