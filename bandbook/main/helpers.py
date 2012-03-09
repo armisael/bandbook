@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 
 reverse_lazy = lazy(reverse, str)
 
+
 def index_block(x, y, width, gravity, style=None, url=None,
                 img_class=None, tmpl_class=None):
     padding = 4
@@ -29,8 +30,10 @@ def index_block(x, y, width, gravity, style=None, url=None,
         if img_list:
             img_url = img_list[randint(0, len(img_list) - 1)]
 
-    if gravity[0] == 'n': y -= (width + padding)
-    if gravity[1] == 'w': x -= (width + padding)
+    if gravity[0] == 'n':
+        y -= (width + padding)
+    if gravity[1] == 'w':
+        x -= (width + padding)
     return x, y, width, width, style, url, img_url, tmpl_class
 
 
@@ -58,7 +61,7 @@ def filter_searchby(parent_searchby, parent_field_set):
     key = parent_field_set[:-4]
     set_children = [x for x in parent_searchby if x.find(key) != -1]
     set_parent = [x for x in parent_searchby if x not in set_children]
-    return set_parent, [x[len(key)+2:] for x in set_children]
+    return set_parent, [x[len(key) + 2:] for x in set_children]
 
 
 def filter_matches(obj, query, filters):

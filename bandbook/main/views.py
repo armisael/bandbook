@@ -42,7 +42,7 @@ def login_view(request):
             login(request, user)
         else:
             messages.error(request,
-                           _('This account has been disabled. Sorry for that!'))
+                       _('This account has been disabled. Sorry for that!'))
     else:
         messages.error(request,
                        _('Wrong username or password'))
@@ -89,7 +89,8 @@ def index(request):
         index_block(413, 409, 35, 'nw', style='error'),
         index_block(413, 410, 10, 'ne', style='warning'),
         index_block(413, 410, 30, 'se', style='info'),
-        index_block(427, 233, 100, 'se', url='instruments/', img_class='instruments'),
+        index_block(427, 233, 100, 'se', url='instruments/',
+                    img_class='instruments'),
 
         index_block(589, 395, 40, 'ne', style='info'),
         index_block(589, 395, 30, 'se', style='warning'),
@@ -144,7 +145,8 @@ class PrintView(DetailView):
         template = self.get_template_names()[0]
         return render_to_pdf(template, context)
 
-# TODO che succede se sposto un elemento in un'altra lista? l'ordinamento va a quel paese?
+
+# TODO che succede se sposto un elemento in un'altra lista? Broken!
 # TODO v problemi spostando in ultima posizione se ci sono buchi..
 # TODO v ordinamento non e' parent-aware!
 class OrderView(View):
@@ -159,7 +161,7 @@ class OrderView(View):
         pkb = kwargs.get('pkb')
 
         if pka is None or pkb is None:
-            return HttpResponse(status = 400)
+            return HttpResponse(status=400)
 
         try:
             obja = self.model._default_manager.get(pk=pka)
@@ -184,8 +186,9 @@ class OrderView(View):
                     .update(ordering=F('ordering') + offset)
 
         target_ordering = objb.ordering - 1 if objb is not None \
-                                            else get_default_ordering(self.model)
-        if not moving_down: target_ordering += 1
+                                        else get_default_ordering(self.model)
+        if not moving_down:
+            target_ordering += 1
         self.model._default_manager.filter(pk=obja.pk)\
                                     .update(ordering=target_ordering)
 
@@ -216,7 +219,7 @@ class _BBCreateView(CreateView):
         if self.parent is not None:
             param = self.kwargs.get(self.parent['param'])
             obj = self.parent['model']._default_manager.get(
-                **{self.parent['param']:param})
+                **{self.parent['param']: param})
             initials.update({
                 self.parent['field']: obj,
             })
@@ -264,9 +267,9 @@ class BBView(object):
 
     @classmethod
     def as_delete_view(cls):
-        return _BBDeleteView.as_view(model = cls.model,
-                                  success_url = reverse_lazy('close_modal'),
-                                  template_name = 'layouts/delete_base.html')
+        return _BBDeleteView.as_view(model=cls.model,
+                                     success_url=reverse_lazy('close_modal'),
+                                     template_name='layouts/delete_base.html')
 
     @classmethod
     def as_order_view(cls):
@@ -300,14 +303,18 @@ def render_to_pdf(template_src, context_dict):
     # see http://tinyurl.com/87ncxd3 for header/footer configuration
     template = get_template(template_src)
     context = Context(context_dict)
-    html  = template.render(context)
+    html = template.render(context)
     result = StringIO.StringIO()
-    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(
+        StringIO.StringIO(html.encode("ISO-8859-1")), result)
     if not pdf.err:
         if 'filename' not in context_dict:
-            context_dict['filename'] = ''.join([str(x) for x in datetime.utcnow().timetuple() if x >= 0])
+            context_dict['filename'] = ''.join(
+                [str(x) for x in datetime.utcnow().timetuple() if x >= 0])
         filename = '%s.pdf' % context_dict['filename']
-        response = HttpResponse(result.getvalue(), mimetype='application/pdf', content_type='application/pdf')
+        response = HttpResponse(result.getvalue(),
+                                mimetype='application/pdf',
+                                content_type='application/pdf')
         response['Content-Disposition'] = 'filename=%s' % filename
         return response
     return HttpResponse('PDF generation error: <pre>%s</pre>' %

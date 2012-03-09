@@ -1,5 +1,6 @@
 from django.forms.widgets import DateInput
 
+
 class BootstrapDatepicker(DateInput):
     def render(self, name, value, attrs=None):
         if attrs is None:
