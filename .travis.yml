@@ -12,7 +12,7 @@ before_script:
   - "psql -c 'create database bandbook;' -U postgres"
 
 script: 
-  - DJANGO_CONF=travis python bandbook/manage.py test instruments main players
+  - pep8 bandbook/
 
 postgres:
   adapter: postgresql
