@@ -6,7 +6,7 @@ def get_default_ordering(cls, parent_id=None):
     try:
         filters = {}
         if parent_id is not None and hasattr(cls, 'parent_model'):
-            parent_field = '%s_id' % cls.parent_model[0]
+            parent_field = '%s' % cls.parent_model[0]
             filters[parent_field] = parent_id
         return cls._default_manager.filter(**filters).\
                     aggregate(Max('ordering')).values()[0] + 1

@@ -5,25 +5,16 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 from operator import attrgetter
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from bandbook.instruments.helpers import get_default_ordering
 
-from django.test import TestCase
 from bandbook.instruments.models import InstrumentCategory, InstrumentType
+from bandbook.main.helpers import BBTestCase
 
 
-class OrderingTest(TestCase):
+class OrderingTest(BBTestCase):
     fixtures = ['instruments']
-
-    def setUp(self):
-        User.objects.create(
-            username='admin_test',
-            password='sha1$1073f$68193214ce14f78051d30cbe15691f786761198e',
-            is_superuser=True,
-            is_active=True,
-            is_staff=True,
-        )
-        self.client.login(username='admin_test', password='admin_test')
+    login = 'superuser'
 
     @staticmethod
     def _group(sqs, fun):
@@ -207,50 +198,85 @@ class OrderingTest(TestCase):
         types = self._group(InstrumentType.objects.all(),
                             lambda x: x.category_id)
 
-        obja = types[categories[0].pk][4]
+        obja = types[categories[1].pk][2]
 
         url = reverse('instrumenttype_order',
-                      args=(categories[0].slug, obja.pk, -1))
+                      args=(categories[1].slug, obja.pk, -1))
         orig_positions, orig_ordering, new_positions, new_ordering = \
             self._test_ordering_with_parent(url, InstrumentType,
                                             parent_field='category_id')
 
-        self.assertEqual(orig_positions[categories[0].pk],
-                         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        self.assertEqual(new_positions[categories[0].pk],
-                         [0, 1, 2, 3, 10, 4, 5, 6, 7, 8, 9])
         self.assertEqual(orig_positions[categories[1].pk],
                          [0, 1, 2, 3, 4, 5])
         self.assertEqual(new_positions[categories[1].pk],
-                         orig_positions[categories[1].pk])
+                         [0, 1, 5, 2, 3, 4])
+        self.assertEqual(orig_positions[categories[0].pk],
+                         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        self.assertEqual(new_positions[categories[0].pk],
+                         orig_positions[categories[0].pk])
         self.assertEqual(orig_positions[categories[2].pk],
                          [0, 1, 2, 3])
         self.assertEqual(new_positions[categories[2].pk],
                          orig_positions[categories[2].pk])
 
-        self.assertEqual(orig_ordering[categories[0].pk],
-                         [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110])
-        self.assertEqual(new_ordering[categories[0].pk],
-                         [10, 20, 30, 40, 110, 59, 69, 79, 89, 99, 109])
         self.assertEqual(orig_ordering[categories[1].pk],
                          [10, 20, 30, 40, 50, 60])
         self.assertEqual(new_ordering[categories[1].pk],
-                         orig_ordering[categories[1].pk])
+                         [10, 20, 60, 39, 49, 59])
+        self.assertEqual(orig_ordering[categories[0].pk],
+                         [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110])
+        self.assertEqual(new_ordering[categories[0].pk],
+                         orig_ordering[categories[0].pk])
         self.assertEqual(orig_ordering[categories[2].pk],
                          [10, 20, 30, 40])
         self.assertEqual(new_ordering[categories[2].pk],
                          orig_ordering[categories[2].pk])
 
 
-class InstrumentTypeViews(TestCase):
+class InstrumentTypeViews(BBTestCase):
+    fixtures = ['instruments']
+    login = 'superuser'
+
     def test_change_category(self):
-        self.assertEqual(1 + 10, 11)
-#        type = InstrumentType.objects.all()[18]
-#        category = InstrumentCategory.objects.filter(
-#            pk__not=type.category_id)[0]
-#
-#        url = reverse('instrumenttype_update',
-#                      args=(type.category.slug, type.pk))
-#        response = self.client.post(url, {
-#            'name': None
-#        })
+        type = InstrumentType.objects.all()[18]
+        category = InstrumentCategory.objects.exclude(
+            pk=type.category_id)[0]
+        expected_ordering = get_default_ordering(InstrumentType,
+                                                 category.pk)
+
+        url = reverse('instrumenttype_update',
+                      args=(type.category.slug, type.pk))
+        response = self.client.post(url, {
+            'name': type.name,
+            'category': category.pk,
+            'ordering': type.ordering,
+        })
+
+        self.assertEqual(response.status_code, 302)
+
+        new_type = InstrumentType.objects.get(pk=type.pk)
+        self.assertEqual(new_type.name, type.name)
+        self.assertEqual(new_type.category, category)
+        self.assertEqual(new_type.ordering, expected_ordering)
+
+    def test_change_new_category(self):
+        type = InstrumentType.objects.all()[18]
+        category = InstrumentCategory.objects.create(name='temp category')
+        expected_ordering = get_default_ordering(InstrumentType,
+                                                 category.pk)
+
+        url = reverse('instrumenttype_update',
+                      args=(type.category.slug, type.pk))
+        response = self.client.post(url, {
+            'name': type.name,
+            'category': category.pk,
+            'ordering': type.ordering,
+        })
+
+        self.assertEqual(response.status_code, 302)
+
+        new_type = InstrumentType.objects.get(pk=type.pk)
+        self.assertEqual(new_type.name, type.name)
+        self.assertEqual(new_type.category, category)
+        self.assertEqual(new_type.ordering, expected_ordering)
+        self.assertEqual(new_type.ordering, 1)

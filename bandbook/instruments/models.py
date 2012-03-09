@@ -2,6 +2,8 @@ from django.contrib.contenttypes.generic import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.db.models.query_utils import Q
+from django.db.models.signals import pre_save
+from django.dispatch.dispatcher import receiver
 from django.template.defaultfilters import date as _date
 from django.utils.translation import ugettext as _
 from django.db import models
@@ -9,6 +11,7 @@ from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
 
 from bandbook.instruments.handlers.instrument_history import site
+from bandbook.instruments.helpers import get_default_ordering
 
 
 class InstrumentCategory(TimeStampedModel):
@@ -143,3 +146,14 @@ class InstrumentHistory(TimeStampedModel):
                 }
         except TypeError:
             return _('error')
+
+
+@receiver(pre_save, sender=InstrumentType, dispatch_uid='')
+def instrumenttype_pre_save(sender, instance, *args, **kwargs):
+    try:
+        prev = InstrumentType.objects.get(pk=instance.pk)
+        if prev.category_id != instance.category_id:
+            instance.ordering = get_default_ordering(InstrumentType,
+                                                     instance.category_id)
+    except InstrumentType.DoesNotExist:
+        pass
