@@ -13,7 +13,7 @@ class InstrumentCategoryAdmin(reversion.VersionAdmin):
 
 
 class InstrumentTypeAdmin(reversion.VersionAdmin):
-    list_display = ['name', 'category', 'ordering',]
+    list_display = ['name', 'category', 'ordering']
 
 
 class InstrumentManufacturerAdmin(reversion.VersionAdmin):
