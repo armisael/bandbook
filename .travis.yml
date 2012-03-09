@@ -4,4 +4,4 @@ install:
   - pip install -r requirements/test.txt --use-mirrors
 
 script: 
-  - pep8 bandbook/
+  - pep8 --exclude=migrations/,manage.py bandbook/
