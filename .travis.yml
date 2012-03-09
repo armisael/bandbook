@@ -8,7 +8,7 @@ install:
   - pip install -r requirements/base.txt --use-mirrors
 
 before_script:
-  - "psql -c 'create database myapp_test;' -U postgres"
+  - "psql -c 'create database bandbook;' -U postgres"
 
 script: 
   - DJANGO_CONF=travis python bandbook/manage.py test instruments main players
