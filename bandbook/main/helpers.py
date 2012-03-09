@@ -1,4 +1,6 @@
 from random import randint
+from django.test import TestCase
+from django.contrib.auth.models import User
 from django.db.models.query_utils import Q
 
 from django.utils.functional import lazy
@@ -70,3 +72,21 @@ def filter_matches(obj, query, filters):
     return filter_queryset(obj.__class__.objects.filter(pk=obj.pk),
                            query,
                            filters).count() > 0
+
+
+class BBTestCase(TestCase):
+    login = None
+
+    def setUp(self):
+        User.objects.create(
+            username='admin_test',
+            password='sha1$1073f$68193214ce14f78051d30cbe15691f786761198e',
+            is_superuser=True,
+            is_active=True,
+            is_staff=True,
+        )
+        if self.login == 'superuser':
+            self._login_superuser()
+
+    def _login_superuser(self):
+        self.client.login(username='admin_test', password='admin_test')

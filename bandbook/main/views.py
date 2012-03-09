@@ -159,6 +159,7 @@ class OrderView(View):
     def post(self, request, *args, **kwargs):
         pka = kwargs.get('pka')
         pkb = kwargs.get('pkb')
+        parent_field = None
 
         if pka is None or pkb is None:
             return HttpResponse(status=400)
@@ -186,7 +187,9 @@ class OrderView(View):
                     .update(ordering=F('ordering') + offset)
 
         target_ordering = objb.ordering - 1 if objb is not None \
-                                        else get_default_ordering(self.model)
+                                            else get_default_ordering(
+                                                    self.model,
+                                                    filters.get(parent_field))
         if not moving_down:
             target_ordering += 1
         self.model._default_manager.filter(pk=obja.pk)\
