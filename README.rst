@@ -1,3 +1,7 @@
+    .. image:: https://secure.travis-ci.org/armisael/bandbook.png?branch=master
+       :alt: Master branch status on travis-ci
+       :align: right
+
 This project is ALPHA and it will probably always be. It is distributed without warranties, use it at your own risk :-)
 
 Do you want to use it? Use it. 
