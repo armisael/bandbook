@@ -14,7 +14,7 @@ Oh and btw, I'm not gonna tell you what this project is for (but if you are play
 
 
 .. |travis-ci| image:: https://secure.travis-ci.org/armisael/bandbook.png?branch=master
-.. _travis-ci: http://travis-ci.org/#!/armisael/bandbook/master
+.. _travis-ci: http://travis-ci.org/armisael/bandbook/
 
 .. |travis-ci pep8| image:: https://secure.travis-ci.org/armisael/bandbook.png?branch=pep8
-.. _travis-ci pep8: http://travis-ci.org/#!/armisael/bandbook/pep8
+.. _travis-ci pep8: http://travis-ci.org/armisael/bandbook/
