@@ -5,28 +5,76 @@
     <style>
         @page {
             size: a4 landscape;
-            margin: 2cm;
+            margin: 1cm;
+            line-height: 3px;
         }
 
         h1 { text-align: middle; font-size: 40px; }
-        p {font-size: 20px;}
+        p {font-size: 14px;}
         span.dummy { font-size: 2px;}
 
         .field {
             text-decoration: underline;
-            font-size: 1.2em;
             font-family: courier;
+        }
+
+        .small {
+            font-size: 8px;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        #logo {
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+
+        table {
+            width: 100%;
         }
 
     </style>
 </head>
 
 <body>
+
 <table>
     <tr>
-        <td>{% include 'instruments/instrumenthistory_pdf_a5.html' with type='COPIA BANDA' %}</td>
-        <td width="50">&nbsp</td>
-        <td>{% include 'instruments/instrumenthistory_pdf_a5.html' with type='COPIA ALLIEVO '%}</td>
+        <td>
+            <table>
+                <tr>
+                    <td width="100">
+                        <img src="/static/images/logo-bsa.png" />
+                    </td>
+                    <td>
+                        <p style="font-size: 18px"><b>Modulo di assegnazione strumento musicale in comodato d'uso / <u>responsabilità dell'allievo</u></b></p>
+                        <p class="small right">Copia banda</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="40">&nbsp</td>
+        <td>
+            <table>
+                <tr>
+                    <td width="100">
+                        <img src="/static/images/logo-bsa.png" />
+                    </td>
+                    <td>
+                        <p style="font-size: 18px"><b>Modulo di assegnazione strumento musicale in comodato d'uso / <u>responsabilità dell'allievo</u></b></p>
+                        <p class="small right">Copia allievo</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>{% include 'instruments/instrumenthistory_pdf_a5.html' %}</td>
+        <td>&nbsp</td>
+        <td>{% include 'instruments/instrumenthistory_pdf_a5.html' %}</td>
     </tr>
 </table>
 </body>

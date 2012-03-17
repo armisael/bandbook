@@ -1,39 +1,77 @@
 {% load bandbook_main %}
-<h1>{{ object.instrument }}</h1>
+{#<h1>{{ object.instrument }}</h1>#}
+{##}
+{#<ul>#}
+{#    <li>instrument: {{ object.instrument }}#}
+{#        <ul>#}
+{#            <li>type: {{ object.instrument.model.type.name }}</li>#}
+{#            <li>Manufacturer: {{ object.instrument.model.manufacturer }}</li>#}
+{#            <li>model: {{ object.instrument.model.name }}</li>#}
+{#            <li>code: {{ object.instrument.code }}</li>#}
+{#        </ul>#}
+{#    </li>#}
+{##}
+{#    <li>date start: {{ object.date_start }}</li>#}
+{#    <li>condition: {{ object.condition }}</li>#}
+{#    <li>notes: {{ object.notes }}</li>#}
+{#    <li>target: {{ object.target }}#}
+{#        <ul>#}
+{#            <li>Name: {{ object.target.full_name }}</li>#}
+{#            <li>Birthdate: {{ object.target.birthdate }}</li>#}
+{#        </ul>#}
+{#    </li>#}
+{#</ul>#}
+{##}
+{#{{ type }}#}
+{##}
+{#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacus eros, tincidunt iaculis viverra ut, malesuada id ipsum. Nam accumsan metus quis risus tincidunt sodales. Pellentesque vel augue arcu. Quisque dignissim, mi quis dapibus tincidunt, tellus urna pulvinar urna, et venenatis lacus odio id mauris. Morbi nisl libero, mattis vel euismod a, facilisis in nulla. Suspendisse risus nulla, vehicula vel elementum vitae, pretium sed lorem. Nulla ornare euismod dapibus. Phasellus risus arcu, hendrerit nec varius in, pretium vel sapien.</p>#}
+{##}
+{#<p>Suspendisse ac odio at odio porta suscipit sit amet sit amet elit. Mauris vitae libero id est suscipit cursus nec ut orci. Etiam eu diam enim. Maecenas vulputate consectetur ante, eget aliquam elit consectetur quis. Maecenas justo purus, elementum eget pulvinar nec, condimentum quis ligula. Aenean quis sapien sed nisl ultrices aliquet. Curabitur lacinia tincidunt ligula, eget porta velit interdum ac. Etiam non leo sed purus eleifend tristique. Praesent diam magna, condimentum ac commodo et, tincidunt quis justo. Curabitur velit urna, posuere eget aliquet quis, suscipit in nulla. Aliquam lorem lacus, sagittis eget varius id, mattis quis lacus.</p>#}
+{##}
+{#<p>Vestibulum sagittis, dolor non tincidunt euismod, felis lectus laoreet ante, non mollis purus nisl ut lorem. Vestibulum ornare adipiscing posuere. Sed ac nulla risus. Aliquam vel lacus vitae tortor faucibus aliquam. Etiam vitae ullamcorper quam. Morbi eu ligula rutrum libero viverra vulputate vitae sit amet leo. Quisque vehicula consectetur fringilla. Nunc et libero sit amet justo rhoncus consectetur. Maecenas augue dolor, egestas et rutrum ut, aliquet vel magna. Nulla eros nibh, cursus ut tincidunt at, egestas eu est. Vivamus feugiat lobortis faucibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in lectus ante, vitae ultrices quam.</p>#}
+{##}
+{#<p>#}
+{#    Il sottoscritto <span class="field">{{ object.target.full_name|to_left:30|real_spaces }}</span>#}
+{#    nato il <span class="field">{{ object.target.birthdate|date:'d F Y'|to_left:15|real_spaces }}</span>#}
+{#    prende in prestito un bellissimo <span class="field">{{ object.instrument.model.type.name|to_left:15|real_spaces }}</span>#}
+{#</p>#}
+{##}
+{#<p>Li, {{ ''|today }}</p>#}
 
-<ul>
-    <li>instrument: {{ object.instrument }}
-        <ul>
-            <li>type: {{ object.instrument.model.type.name }}</li>
-            <li>Manufacturer: {{ object.instrument.model.manufacturer }}</li>
-            <li>model: {{ object.instrument.model.name }}</li>
-            <li>code: {{ object.instrument.code }}</li>
-        </ul>
-    </li>
 
-    <li>date start: {{ object.date_start }}</li>
-    <li>condition: {{ object.condition }}</li>
-    <li>notes: {{ object.notes }}</li>
-    <li>target: {{ object.target }}
-        <ul>
-            <li>Name: {{ object.target.full_name }}</li>
-            <li>Birthdate: {{ object.target.birthdate }}</li>
-        </ul>
-    </li>
-</ul>
+<p style="text-align: justify">
+    Il presente modulo attesta la ricezione da parte dell'allievo sotto indicato di uno strumento musicale di
+    proprietà della Banda Sociale di Ala. Lo strumento viene consegnato all'allievo in buono stato manutenzione
+    (lo stato di conservazione viene indicato dall'insegnante nel riquadro seguente); lo strumento viene ceduto
+    all'allievo in comodato d'uso gratuito fino a quando lo stesso frequenterà i corsi di formazione organizzati
+    dalla Banda Sociale di Ala. <b>Rimane a carico dell'allievo il compito della diligente cura dello strumento
+        musicale assegnato; eventuali danni cagionati allo strumento dovranno essere risarciti dall'allievo (o
+        dai suoi familiari)</b> <u>Nell'evenienza di un danno allo strumento, <i>l'allievo dovrà darne tempestiva
+        comunicazione all'insegnante; il responsabile della Banda, poi, si attiverà per la riparazione dello
+        strumento presso un centro specializzato, richiedendo poi il rimborso della spesa all'allievo</i></u>.</p>
 
-{{ type }}
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacus eros, tincidunt iaculis viverra ut, malesuada id ipsum. Nam accumsan metus quis risus tincidunt sodales. Pellentesque vel augue arcu. Quisque dignissim, mi quis dapibus tincidunt, tellus urna pulvinar urna, et venenatis lacus odio id mauris. Morbi nisl libero, mattis vel euismod a, facilisis in nulla. Suspendisse risus nulla, vehicula vel elementum vitae, pretium sed lorem. Nulla ornare euismod dapibus. Phasellus risus arcu, hendrerit nec varius in, pretium vel sapien.</p>
-
-<p>Suspendisse ac odio at odio porta suscipit sit amet sit amet elit. Mauris vitae libero id est suscipit cursus nec ut orci. Etiam eu diam enim. Maecenas vulputate consectetur ante, eget aliquam elit consectetur quis. Maecenas justo purus, elementum eget pulvinar nec, condimentum quis ligula. Aenean quis sapien sed nisl ultrices aliquet. Curabitur lacinia tincidunt ligula, eget porta velit interdum ac. Etiam non leo sed purus eleifend tristique. Praesent diam magna, condimentum ac commodo et, tincidunt quis justo. Curabitur velit urna, posuere eget aliquet quis, suscipit in nulla. Aliquam lorem lacus, sagittis eget varius id, mattis quis lacus.</p>
-
-<p>Vestibulum sagittis, dolor non tincidunt euismod, felis lectus laoreet ante, non mollis purus nisl ut lorem. Vestibulum ornare adipiscing posuere. Sed ac nulla risus. Aliquam vel lacus vitae tortor faucibus aliquam. Etiam vitae ullamcorper quam. Morbi eu ligula rutrum libero viverra vulputate vitae sit amet leo. Quisque vehicula consectetur fringilla. Nunc et libero sit amet justo rhoncus consectetur. Maecenas augue dolor, egestas et rutrum ut, aliquet vel magna. Nulla eros nibh, cursus ut tincidunt at, egestas eu est. Vivamus feugiat lobortis faucibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in lectus ante, vitae ultrices quam.</p>
+<p>DATI DELL'ALLIEVO:</p>
 
 <p>
-    Il sottoscritto <span class="field">{{ object.target.full_name|center:30|real_spaces }}</span>
-    nato il <span class="field">{{ object.target.birthdate|date:'d F Y'|center:15|real_spaces }}</span>
-    prende in prestito un bellissimo <span class="field">{{ object.instrument.model.type.name|center:15|real_spaces }}</span>
+    Nome e Cognome <span class="field">{{ object.target.full_name|to_left:43|real_spaces }}</span><br/>
+    Indirizzo <span class="field">{{ object.target.address|to_left:50|real_spaces }}</span><br/>
+    Data di nascita <span class="field">{{ object.target.birthdate|date:'d F Y'|to_left:25|real_spaces }}</span><br/>
+    Telefono <span class="field">{{ object.target.phone_number|to_left:22|real_spaces }}</span>,
+    cell <span class="field">{{ object.target.mobile_number|to_left:22|real_spaces }}</span><br/>
 </p>
 
-<p>Li, {{ ''|today }}</p>
+<p>DATI DELLO STRUMENTO IN COMODATO D'USO:</p>
+<p>
+    Strumento <span class="field">{{ object.instrument.model|to_left:49|real_spaces }}</span><br/>
+    Matricola <span class="field">{{ object.instrument.code|to_left:50|real_spaces }}</span><br/>
+    Condizioni dello strumento <span class="field">{{ object.condition|to_left:37|real_spaces }}</span><br/>
+    Data <span class="field">{{ ''|today|date:'d F Y'|to_left:25|real_spaces }}</span><br/>
+</p>
+
+<p>
+    <b>Firma dell'insegnante</b> <span class="field right">{{ ""|to_left:38|real_spaces }}</span>
+</p>
+<p>
+    <b>Firma dell'allievo <span class="small">(del genitore se l'iscritto è minorenne)</span></b>
+    <span class="field right">{{ ""|to_left:24|real_spaces }}</span>
+</p>

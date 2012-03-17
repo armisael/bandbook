@@ -116,7 +116,6 @@ class Instrument(TimeStampedModel):
         return reverse('instrument_detail', args=(self.slug, ))
 
 
-    # TODO stampa modulo di prestito
 class InstrumentHistory(TimeStampedModel):
     instrument = models.ForeignKey(Instrument, verbose_name=_("Instrument"))
     date_start = models.DateField(verbose_name=_("From"))
