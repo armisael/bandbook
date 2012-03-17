@@ -323,6 +323,8 @@ def render_to_pdf(template_src, context_dict):
     return HttpResponse('PDF generation error: <pre>%s</pre>' %
                         cgi.escape(html), status=500)
 
+
 def _pdf_fetch_resources(uri, rel):
-    path = os.path.join(settings.STATIC_ROOT, uri.replace(settings.STATIC_URL, ""))
+    path = os.path.join(settings.STATIC_ROOT,
+                        uri.replace(settings.STATIC_URL, ""))
     return path
