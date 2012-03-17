@@ -136,3 +136,9 @@ def today(str):
 @register.filter()
 def get(dictionary, key):
     return dictionary.get(key)
+
+
+@register.filter()
+def to_left(obj, length):
+    str = unicode(obj)
+    return " " + str + " " * (length - len(str) - 1)

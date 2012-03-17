@@ -18,7 +18,9 @@ from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+import os
 from xhtml2pdf import pisa
+from bandbook import settings
 from bandbook.instruments.helpers import get_default_ordering
 from bandbook.main.helpers import index_block, reverse_lazy, filter_queryset
 
@@ -146,9 +148,6 @@ class PrintView(DetailView):
         return render_to_pdf(template, context)
 
 
-# TODO che succede se sposto un elemento in un'altra lista? Broken!
-# TODO v problemi spostando in ultima posizione se ci sono buchi..
-# TODO v ordinamento non e' parent-aware!
 class OrderView(View):
     model = None
 
@@ -309,7 +308,8 @@ def render_to_pdf(template_src, context_dict):
     html = template.render(context)
     result = StringIO.StringIO()
     pdf = pisa.pisaDocument(
-        StringIO.StringIO(html.encode("ISO-8859-1")), result)
+        StringIO.StringIO(html.encode("ISO-8859-1")), result,
+        link_callback=_pdf_fetch_resources)
     if not pdf.err:
         if 'filename' not in context_dict:
             context_dict['filename'] = ''.join(
@@ -322,3 +322,7 @@ def render_to_pdf(template_src, context_dict):
         return response
     return HttpResponse('PDF generation error: <pre>%s</pre>' %
                         cgi.escape(html), status=500)
+
+def _pdf_fetch_resources(uri, rel):
+    path = os.path.join(settings.STATIC_ROOT, uri.replace(settings.STATIC_URL, ""))
+    return path
